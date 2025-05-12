@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: dlyau (generated)
+      changes:
+        - createTable:
+            tableName: matches
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: season
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: match_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: home_team
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_team
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: home_score
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: away_score
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            tableName: matches
+            columnNames: season, match_date, home_team, away_team
+            constraintName: uk_match_unique
